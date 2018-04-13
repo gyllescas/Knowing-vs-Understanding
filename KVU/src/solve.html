@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>Bootstrap 4 Layout</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://fonts.googleapis.com/css?family=Bevan" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+    <div class="container fill" id="page">
+        <nav class="navbar navbar-expand-lg navbar-light " style="background-color:green">
+            <a class="navbar-brand" href="#"> Knowing Vs. Understanding</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item" id="skip">
+                        <a class="nav-link" href="#"> Skip to Next problem</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"> Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    </div>
+    <div class="container fill">
+        <div class="jumbotron">
+            <div id="main_row" class="row" style="height: 50vh;">
+                <div class="col-4" id="Spot">
+                    <img src="assets/close-up-macro-teddy-bear-105531 (1).jpg">
+
+                    <div class="row">
+                        <div class="col">
+                            <h3> Ten's</h3>
+                            <div  id="tens_box" class="drag_box">
+
+                                
+                            </div>
+                        </div>
+                        <div class="col"> 
+                            <h3>One's</h3>
+                            <div  id="ones_box" class="drag_box">
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8" >
+                    <div class="row">
+                        <div class="col">
+                            <h1 class="display-7">Set up this problem:</h1>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                    </div>
+                    <div class="row" id="problem_div">
+                       
+
+                    </div>
+                
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+
+    </div>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/solve.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
