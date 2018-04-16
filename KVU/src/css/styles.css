@@ -57,6 +57,10 @@ body{
     margin: 0;
 }
 
+.hidden {
+    display: none; 
+   }
+
 .numberDiv-drag{
     height: 50%;
     padding: 0;

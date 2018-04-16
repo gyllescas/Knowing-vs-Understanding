@@ -33,6 +33,8 @@ var problemIndex = 0;
 var skipText = $('#skip_text');
 var problem_div = $('#problem_div');
 var fullProblems = [];
+var onesStages =[];
+var onesStagesValues=[]
 
 
 var srcEl;
@@ -46,6 +48,32 @@ function dropHandler(el) {
     //i think we'd just be checking srcEL to see if  it's a 10 or a 1
 
     //if thats true drop the canvas in
+    console.log("this is what el.id is: ", el.id);
+    var origin = srcEl.id;
+    console.log("this is what origin is: ", origin);
+    origin = origin.toString();
+    if( origin == 'ones_box'){
+        //this is a one's get the index of onesStages to access the stage
+        //add one's if you need to 
+        
+        console.log("this is what 'this.id[0] refers to: " ,this.id[0]);
+        //dropbox?
+        var i = this.id[0];
+        //
+        curStage= onesStages[i];
+        if(onesStagesValues[i]==0){
+            //we just need to unhide it 
+
+            $('#'+i +'_ones').removeClass('hidden');
+            onesStagesValues[i]++;
+            return;
+            
+        }
+
+
+
+
+    }
 
     this.innerHTML = el.originalEvent.dataTransfer.getData('text/html');
 
@@ -60,8 +88,9 @@ function handleStart(ev) {
     //ev.stopPropagation();
     this.style.opacity = '0.4';
     srcEl = this;
+    console.log("this is the id of the source element ", this);
     ev.originalEvent.dataTransfer.effectAllowed = 'move';
-    ev.originalEvent.dataTransfer.setData('text/html', this.innerHTML);
+    ev.originalEvent.dataTransfer.setData('text', this.id);
     return;
 
 }
@@ -142,7 +171,7 @@ function createDivs(problemObject) {
 
         div += '<div class="row numberDiv-drag">';
         div += '<div class="col-8 numverDiv"> </div>'
-        div += '<div class="col-2 numberDiv" id="' + i + '_ones"> </div>'
+        div += '<div class="col-2 hidden numberDiv" id="' + i + '_ones"> </div>'
         //for (j = 0; j < 10; j++) {
         //should be <div id=2_tens0....9)
         //   div += '<div class="row numberDiv" id ="' + i + '_ones' + j + '"></div>';
@@ -336,6 +365,8 @@ function createDivs(problemObject) {
             height: box_height//box_height//box_height //$('#tens_box').innerHeight()
 
         });
+        onesStages.push(stage);
+        onesStagesValues.push(0);
         var layer = new Konva.Layer();
 
          var rectX = stage.getWidth(); // 2 //- 25;

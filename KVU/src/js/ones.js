@@ -2,50 +2,33 @@
 
 //var width = window.innerWidth;
 //var height = window.innerHeight;
-
+containerDiv = $('#ones_box');
+var box_width = containerDiv.width() - 5;
+ var box_height = containerDiv.height() - 5;
 var stage = new Konva.Stage({
     container: 'ones_box',
-    width: $('#ones_box').innerWidth(),
-    height: $('#ones_box').innerHeight()
+    width: box_width,
+    height: box_height
 });
 
 var layer = new Konva.Layer();
-    var rectX = stage.getWidth() / 2 //- 25;
-    var rectY = stage.getHeight() / 2// - 30;
+    var rectX = stage.getWidth()//- 25;
+    var rectY = stage.getHeight() // - 30;
 
     var box1 = new Konva.Rect({
-        x: rectX,
-        y: rectY,
-        width: 12,
-        height: 25,
-        fill: '#00D2FF',
+        x: 1,
+        y: 50,
+        width: box_width/2-5,
+        height: box_width/2-5,
+        fill: 'red',
         stroke: 'black',
-        strokeWidth: 4,
-        draggable: true
+        strokeWidth: 1,
+        draggable: false,
+        shadowOffsetX: 3,
+        shadowOffsetY: 3
     });
-    
-
-    var box2 = new Konva.Rect({
-        x: rectX+20,
-        y: rectY,
-        width: 12,
-        height: 25,
-        fill: '#00D2FF',
-        stroke: 'black',
-        strokeWidth: 4,
-        draggable: true
-    });
-    
-
-    var yellowGroup = new Konva.Group({
-        x: 100,
-        y: 100,
-        draggable: true
-    });
-
-    //yellowGroup.add(box1);
-    //yellowGroup.add(box2);
     layer.add(box1);
-    layer.add(box2);
     stage.add(layer);
+
+    
 
