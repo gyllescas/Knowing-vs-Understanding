@@ -108,11 +108,7 @@ var layer = new Konva.Layer();
         strokeWidth: 1,
         draggable: false
     });
-    var yellowGroup = new Konva.Group({
-        x: 100,
-        y: 100,
-        draggable: true
-    });
+    
     var box9 = new Konva.Rect({
         x: 1,
         y: 80,
@@ -135,14 +131,7 @@ var layer = new Konva.Layer();
         strokeWidth: 1,
         draggable: false
     });
-    var yellowGroup = new Konva.Group({
-        x: 100,
-        y: 100,
-        draggable: true
-    });
-
-    //yellowGroup.add(box1);
-    //yellowGroup.add(box2);
+   
     layer.add(box1);
     layer.add(box2);
     layer.add(box3);

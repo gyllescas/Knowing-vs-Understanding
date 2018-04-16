@@ -129,26 +129,235 @@ function createDivs(problemObject) {
 
 
         // same for one's 
-
+        //except we only need 10 stacked
         div += '<div id="ones' + i + '" class="col numberDiv" > ';
 
         div += '<div class="row numberDiv-drag">';
-        for (j = 0; j < 5; j++) {
-            //should be <div id=2_tens0....9)
-            div += '<div class="col numberDiv" id ="' + i + '_ones' + j + '"></div>';
+        // for (j = 0; j < 5; j++) {
+        //    //should be <div id=2_tens0....9)
+        //     div += '<div class="col numberDiv" id ="' + i + '_ones' + j + '"></div>';
 
-        }
+        // }
         div += '</div>';
 
         div += '<div class="row numberDiv-drag">';
-        for (j = 5; j < 10; j++) {
-            //should be <div id=2_tens0....9)
-            div += '<div class="col numberDiv" id ="' + i + '_ones' + j + '"></div>';
+        div += '<div class="col-8 numverDiv"> </div>'
+        div += '<div class="col-2 numberDiv" id="' + i + '_ones"> </div>'
+        //for (j = 0; j < 10; j++) {
+        //should be <div id=2_tens0....9)
+        //   div += '<div class="row numberDiv" id ="' + i + '_ones' + j + '"></div>';
 
-        }
-        div += '</div></div> </div>';
+        // }
+        div += '</div></div></div> </div>';
 
         argumentID.append(div);
+        //now clear div?
+        div = '';
+
+        //make canvas for ten's
+
+        for (j = 0; j < 10; j++) {
+            containerDiv = $('#' + i + '_tens' + j);
+            var box_width = containerDiv.width() - 5;
+            var box_height = containerDiv.height() - 5;
+
+            var stage = new Konva.Stage({
+                container: i + '_tens' + j,
+                width: box_width,//$('#tens_box').innerWidth(),
+                height: box_height//box_height//box_height //$('#tens_box').innerHeight()
+            });
+
+            var layer = new Konva.Layer();
+
+            var rectX = stage.getWidth(); // 2 //- 25;
+            var rectY = stage.getHeight();// 2// - 30;
+
+            console.log("this is recy/10 " + rectY / 10);
+            console.log("this is rectY ", rectY);
+
+            var box1 = new Konva.Rect({
+                x: 1,
+                y: 0,
+                width: box_width,
+                height: rectY / 10,
+                fill: 'red',
+                stroke: 'black',
+                strokeWidth: 1,
+                draggable: false,
+                shadowOffsetX: 3,
+                shadowOffsetY: 3
+            });
+
+
+            var box2 = new Konva.Rect({
+                x: 1,
+                y: 10,
+                width: box_width,
+                height: rectY / 10,
+                fill: 'red',
+                stroke: 'black',
+                strokeWidth: 1,
+                draggable: false,
+                shadowOffsetX: 3,
+                shadowOffsetY: 3
+            });
+
+            var box3 = new Konva.Rect({
+                x: 1,
+                y: 20,
+                width: box_width,
+                height: rectY / 10,
+                fill: 'red',
+                stroke: 'black',
+                strokeWidth: 1,
+                draggable: false,
+                shadowOffsetX: 3,
+                shadowOffsetY: 3
+            });
+
+
+            var box4 = new Konva.Rect({
+                x: 1,
+                y: 30,
+                width: box_width,
+                height: rectY / 10,
+                fill: 'red',
+                stroke: 'black',
+                strokeWidth: 1,
+                draggable: false,
+                shadowOffsetX: 3,
+                shadowOffsetY: 3
+            });
+
+            var box5 = new Konva.Rect({
+                x: 1,
+                y: 40,
+                width: box_width,
+                height: rectY / 10,
+                fill: 'red',
+                stroke: 'black',
+                strokeWidth: 1,
+                draggable: false,
+                shadowOffsetX: 3,
+                shadowOffsetY: 3
+            });
+
+
+            var box6 = new Konva.Rect({
+                x: 1,
+                y: 50,
+                width: box_width,
+                height: rectY / 10,
+                fill: 'red',
+                stroke: 'black',
+                strokeWidth: 1,
+                draggable: false,
+                shadowOffsetX: 3,
+                shadowOffsetY: 3
+            });
+
+            var box7 = new Konva.Rect({
+                x: 1,
+                y: 60,
+                width: box_width,
+                height: rectY / 10,
+                fill: 'red',
+                stroke: 'black',
+                strokeWidth: 1,
+                draggable: false,
+                shadowOffsetX: 3,
+                shadowOffsetY: 3
+            });
+
+
+            var box8 = new Konva.Rect({
+                x: 1,
+                y: 70,
+                width: box_width,
+                height: rectY / 10,
+                fill: 'red',
+                stroke: 'black',
+                strokeWidth: 1,
+                draggable: false,
+                shadowOffsetX: 3,
+                shadowOffsetY: 3
+            });
+
+            var box9 = new Konva.Rect({
+                x: 1,
+                y: 80,
+                width: box_width,
+                height: rectY / 10,
+                fill: 'red',
+                stroke: 'black',
+                strokeWidth: 1,
+                draggable: false,
+                shadowOffsetX: 3,
+                shadowOffsetY: 3
+            });
+
+
+            var box10 = new Konva.Rect({
+                x: 1,
+                y: 90,
+                width: box_width,
+                height: rectY / 10,
+                fill: 'red',
+                stroke: 'black',
+                strokeWidth: 1,
+                draggable: false,
+                shadowOffsetX: 3,
+                shadowOffsetY: 3
+            });
+
+            layer.add(box1);
+            layer.add(box2);
+            layer.add(box3);
+            layer.add(box4);
+            layer.add(box5);
+            layer.add(box6);
+            layer.add(box7);
+            layer.add(box8);
+            layer.add(box9);
+            layer.add(box10);
+            stage.add(layer);
+
+
+        }
+
+        //same for one's
+        containerDiv = $('#' + i + '_ones');
+        var box_width = containerDiv.width() - 5;
+        var box_height = containerDiv.height() - 5;
+
+        var stage = new Konva.Stage({
+            container: i + '_ones',
+            width: box_width,//$('#tens_box').innerWidth(),
+            height: box_height//box_height//box_height //$('#tens_box').innerHeight()
+
+        });
+        var layer = new Konva.Layer();
+
+         var rectX = stage.getWidth(); // 2 //- 25;
+        var rectY = stage.getHeight();// 2// - 30;
+
+        console.log("this is recy/10 " + rectY / 10);
+        console.log("this is rectY ", rectY);
+
+        var box1 = new Konva.Rect({
+            x: 1,
+            y: 0,
+            width: box_width,
+            height: rectY / 10,
+            fill: 'red',
+            stroke: 'black',
+            strokeWidth: 1,
+            draggable: false,
+            shadowOffsetX: 3,
+            shadowOffsetY: 3
+        });
+        layer.add(box1);
+        stage.add(layer);
 
     }
 
@@ -165,21 +374,9 @@ function createDivs(problemObject) {
     //problem_div.append(div);
 
     //now create the canvas 
-/*
-    for (i = 0; i < problemObject.arguments.length; i++) {
-        containerDiv = '#' + i + 'box';
-        var box_width = $(containerDiv).width() - 5;
-        var box_height = $(containerDiv).height() + 5;
-
-        var stage = new Konva.Stage({
-            container: containerDiv,
-            width: box_width,//$('#tens_box').innerWidth(),
-            height: 90//box_height//box_height //$('#tens_box').innerHeight()
-        });
 
 
-    }
-*/
+
 
 
 }
