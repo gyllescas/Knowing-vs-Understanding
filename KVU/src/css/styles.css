@@ -13,6 +13,7 @@ img {
 .jumbotron {
    
     background-size: cover;
+    background-color: #86d6fe;
     height: 100vh;
 
 }
@@ -43,10 +44,11 @@ body{
 .drag_box{
     float: left;
     width: 100%;
-    height: 100%;
+    height: 70%;
     margin: 10px;
-    padding: 10px;
+    padding: 0px;
     border: 1px solid black;
+    
 }
 
 #problem_div{

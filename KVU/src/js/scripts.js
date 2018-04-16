@@ -7,6 +7,7 @@ $(document).ready(function(){
     $('#addProblem').on('click', function(){
         console.log("the button got clicked")
         var p_input = $('#problem_input').val();
+        p_input.toString().replace(/\s/g, "");
         //document.getElementById('problem_input').nodeValue
 
         //TODO: check if it's a valid input
@@ -36,6 +37,14 @@ $(document).ready(function(){
        
 
     });
+
+    $(function(){
+        $('#problem_input').bind('input', function(){
+          $(this).val(function(_, p_input){
+           return p_input.replace(/\s+/g, '');
+          });
+        });
+      });
 
 
 });
