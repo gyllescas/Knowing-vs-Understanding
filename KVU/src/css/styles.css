@@ -51,6 +51,18 @@ body{
     
 }
 
+.numberDiv{
+    height:100%;
+    padding: 0;
+    margin: 0;
+}
+
+.numberDiv-drag{
+    height: 50%;
+    padding: 0;
+    margin: 0;
+}
+
 #problem_div{
     height: 100%;
 }
