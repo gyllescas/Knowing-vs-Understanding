@@ -33,8 +33,8 @@ var problemIndex = 0;
 var skipText = $('#skip_text');
 var problem_div = $('#problem_div');
 var fullProblems = [];
-var onesStages =[];
-var onesStagesValues=[]
+var onesStages = [];
+var onesStagesValues = []
 
 
 var srcEl;
@@ -52,22 +52,22 @@ function dropHandler(el) {
     var origin = srcEl.id;
     console.log("this is what origin is: ", origin);
     origin = origin.toString();
-    if( origin == 'ones_box'){
+    if (origin == 'ones_box') {
         //this is a one's get the index of onesStages to access the stage
         //add one's if you need to 
-        
-        console.log("this is what 'this.id[0] refers to: " ,this.id[0]);
+
+        console.log("this is what 'this.id[0] refers to: ", this.id[0]);
         //dropbox?
         var i = this.id[0];
         //
-        curStage= onesStages[i];
-        if(onesStagesValues[i]==0){
+        curStage = onesStages[i];
+        if (onesStagesValues[i] == 0) {
             //we just need to unhide it 
 
-            $('#'+i +'_ones').removeClass('hidden');
+            $('#' + i + '_ones').removeClass('hidden');
             onesStagesValues[i]++;
             return;
-            
+
         }
 
 
@@ -83,6 +83,8 @@ function dropHandler(el) {
 
 
 }
+
+
 function handleStart(ev) {
     //ev.preventDefault();  
     //ev.stopPropagation();
@@ -93,6 +95,33 @@ function handleStart(ev) {
     ev.originalEvent.dataTransfer.setData('text', this.id);
     return;
 
+}
+function fitStageIntoParentContainer() {
+    //wow this is bad. we're going to be resizing all 20 divs :()
+    var i;
+    var j;
+    for (i = 0; i < onesStages.length; i++) {
+        for (j = 0; j < fullProblems[problemIndex].arguments.length; j++) {
+            var container = i + '_tens' + j;
+
+            // now we need to fit stage into parent
+            var stageWidth = tens_widths[j];
+            var containerWidth = container.offsetWidth;
+            // to do this we need to scale the stage
+            var scale = containerWidth / stageWidth;
+
+
+            stage.width(stageWidth * scale);
+            stage.height(stageHeight * scale);
+            stage.scale({ x: scale, y: scale });
+            stage.draw();
+
+        }
+
+
+
+
+    }
 }
 
 
@@ -136,7 +165,7 @@ function createDivs(problemObject) {
     for (i = 0; i < problemObject.arguments.length; i++) {
         var argumentID = $('#' + i + 'box');
         div += '<div class ="row numberDiv">';
-        div += '<div id="tens' + i + '" class="col numberDiv" > ';
+        div += '<div id="tens' + i + '" class="col-9 numberDiv" > ';
 
         div += '<div class="row numberDiv-drag">';
         for (j = 0; j < 5; j++) {
@@ -159,25 +188,25 @@ function createDivs(problemObject) {
 
         // same for one's 
         //except we only need 10 stacked
-        div += '<div id="ones' + i + '" class="col numberDiv" > ';
+        div += '<div id="ones' + i + '" class="col-3 numberDiv" > ';
 
-        div += '<div class="row numberDiv-drag">';
+        //div += '<div class="row numberDiv-drag">';
         // for (j = 0; j < 5; j++) {
         //    //should be <div id=2_tens0....9)
         //     div += '<div class="col numberDiv" id ="' + i + '_ones' + j + '"></div>';
 
         // }
-        div += '</div>';
+        //div += '</div>';
 
-        div += '<div class="row numberDiv-drag">';
-        div += '<div class="col-8 numverDiv"> </div>'
-        div += '<div class="col-2 hidden numberDiv" id="' + i + '_ones"> </div>'
+       // div += '<div class="row numberDiv-drag">';
+       // div += '<div class="col-8 numverDiv"> </div>'
+       // div += '<div class="col-2 hidden numberDiv" id="' + i + '_ones"> </div>'
         //for (j = 0; j < 10; j++) {
         //should be <div id=2_tens0....9)
         //   div += '<div class="row numberDiv" id ="' + i + '_ones' + j + '"></div>';
 
         // }
-        div += '</div></div></div> </div>';
+        div += '</div></div> </div>';
 
         argumentID.append(div);
         //now clear div?
@@ -207,7 +236,7 @@ function createDivs(problemObject) {
             var box1 = new Konva.Rect({
                 x: 1,
                 y: 0,
-                width: box_width,
+                width: (box_width-10),
                 height: rectY / 10,
                 fill: 'red',
                 stroke: 'black',
@@ -221,7 +250,7 @@ function createDivs(problemObject) {
             var box2 = new Konva.Rect({
                 x: 1,
                 y: 10,
-                width: box_width,
+                width: box_width-10,
                 height: rectY / 10,
                 fill: 'red',
                 stroke: 'black',
@@ -234,7 +263,7 @@ function createDivs(problemObject) {
             var box3 = new Konva.Rect({
                 x: 1,
                 y: 20,
-                width: box_width,
+                width: box_width-10,
                 height: rectY / 10,
                 fill: 'red',
                 stroke: 'black',
@@ -248,7 +277,7 @@ function createDivs(problemObject) {
             var box4 = new Konva.Rect({
                 x: 1,
                 y: 30,
-                width: box_width,
+                width: box_width-10,
                 height: rectY / 10,
                 fill: 'red',
                 stroke: 'black',
@@ -261,7 +290,7 @@ function createDivs(problemObject) {
             var box5 = new Konva.Rect({
                 x: 1,
                 y: 40,
-                width: box_width,
+                width: box_width-10,
                 height: rectY / 10,
                 fill: 'red',
                 stroke: 'black',
@@ -275,7 +304,7 @@ function createDivs(problemObject) {
             var box6 = new Konva.Rect({
                 x: 1,
                 y: 50,
-                width: box_width,
+                width: box_width-10,
                 height: rectY / 10,
                 fill: 'red',
                 stroke: 'black',
@@ -288,7 +317,7 @@ function createDivs(problemObject) {
             var box7 = new Konva.Rect({
                 x: 1,
                 y: 60,
-                width: box_width,
+                width: box_width-10,
                 height: rectY / 10,
                 fill: 'red',
                 stroke: 'black',
@@ -302,7 +331,7 @@ function createDivs(problemObject) {
             var box8 = new Konva.Rect({
                 x: 1,
                 y: 70,
-                width: box_width,
+                width: box_width-10,
                 height: rectY / 10,
                 fill: 'red',
                 stroke: 'black',
@@ -315,7 +344,7 @@ function createDivs(problemObject) {
             var box9 = new Konva.Rect({
                 x: 1,
                 y: 80,
-                width: box_width,
+                width: box_width-10,
                 height: rectY / 10,
                 fill: 'red',
                 stroke: 'black',
@@ -329,7 +358,7 @@ function createDivs(problemObject) {
             var box10 = new Konva.Rect({
                 x: 1,
                 y: 90,
-                width: box_width,
+                width: box_width-10,
                 height: rectY / 10,
                 fill: 'red',
                 stroke: 'black',
@@ -350,17 +379,40 @@ function createDivs(problemObject) {
             layer.add(box9);
             layer.add(box10);
             stage.add(layer);
+            /*
+                        function fitStageIntoParentContainer() {
+                            var container =  i + '_tens' + j;  //document.querySelector('#stage-parent');
+            
+                            // now we need to fit stage into parent
+                            var containerWidth = container.offsetWidth;
+                            // to do this we need to scale the stage
+                            var scale = containerWidth / box_width;
+            
+            
+            
+                            stage.width(stageWidth * scale);
+                            stage.height(stageHeight * scale);
+                            stage.scale({ x: scale, y: scale });
+                            stage.draw();
+                            box_width = containerDiv.width() - 5;
+                        }
+            
+                        fitStageIntoParentContainer();
+                        // adapt the stage on any window resize
+                        window.addEventListener('resize', fitStageIntoParentContainer ); 
+            
+            */
 
 
         }
 
         //same for one's
-        containerDiv = $('#' + i + '_ones');
+        containerDiv = $('#ones' + i);
         var box_width = containerDiv.width() - 5;
         var box_height = containerDiv.height() - 5;
 
         var stage = new Konva.Stage({
-            container: i + '_ones',
+            container: 'ones'+i,
             width: box_width,//$('#tens_box').innerWidth(),
             height: box_height//box_height//box_height //$('#tens_box').innerHeight()
 
@@ -369,7 +421,7 @@ function createDivs(problemObject) {
         onesStagesValues.push(0);
         var layer = new Konva.Layer();
 
-         var rectX = stage.getWidth(); // 2 //- 25;
+        var rectX = stage.getWidth(); // 2 //- 25;
         var rectY = stage.getHeight();// 2// - 30;
 
         console.log("this is recy/10 " + rectY / 10);
@@ -377,8 +429,8 @@ function createDivs(problemObject) {
 
         var box1 = new Konva.Rect({
             x: 1,
-            y: 0,
-            width: box_width,
+            y: box_height-30,
+            width: box_width/2,
             height: rectY / 10,
             fill: 'red',
             stroke: 'black',
@@ -389,6 +441,10 @@ function createDivs(problemObject) {
         });
         layer.add(box1);
         stage.add(layer);
+
+
+
+
 
     }
 
@@ -518,6 +574,7 @@ function load_problem() {
 $(document).ready(function () {
     //load the first problem to be solved
 
+
     load_problem();
 
     $('#skip').on('click', load_problem);
@@ -534,6 +591,12 @@ $(document).ready(function () {
 
     $('.drag_box').on('dragstart', handleStart);
     $('.drag_box').on('drop', dropHandler);
+
+    //if the window gets resized go ahead and resize ALL OF THE 10'S CANVAS
+
+    // :(  this is so ineffecient but, it's how i'm doing it right now
+    // try and fix later!
+    window.addEventListener('resize', fitStageIntoParentContainer);
 
 
 

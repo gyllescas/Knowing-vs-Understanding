@@ -7,6 +7,9 @@ function Problem(userInput){
     this.arguments = [];
     this.argumentCount;
 
+    //we need to keep track of 
+    this.containerDiv = '';
+
 }
 
 
